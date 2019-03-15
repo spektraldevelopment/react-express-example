@@ -18,11 +18,11 @@ class List extends Component {
     getList = () => {
         fetch('/api/getList')
         .then((res) => {
-            console.log(res);
-            return res.json
-            
+            return res.json()
         })
-        .then(list => this.setState({ list }))
+        .then((list) => {
+            this.setState({ list })
+        })
     }
 
     render() {
@@ -35,9 +35,9 @@ class List extends Component {
                     list.length ? (
                     <div>
                         {/* Render the list of items */}
-                        {list.map((item) => {
+                        {list.map((item, i) => {
                         return(
-                            <div>
+                            <div key={i}>
                             {item}
                             </div>
                         );
